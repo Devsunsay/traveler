@@ -1,0 +1,9 @@
+{% extends "index/admin.html.twig" %}
+
+{% block content %}
+    <h1>Create new Travel</h1>
+
+    {{ include('travel/_form.html.twig') }}
+
+    <a href="{{ path('admin_travel_index') }}">back to list</a>
+{% endblock %}

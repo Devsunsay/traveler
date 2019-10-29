@@ -1,0 +1,42 @@
+{% extends "index/admin.html.twig" %}
+
+{% block content %}
+    <h1>Travel index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>DepartureDate</th>
+                <th>ArrivalDate</th>
+                <th>CreatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for travel in travels %}
+            <tr>
+                <td>{{ travel.id }}</td>
+                <td>{{ travel.destination }}</td>
+                <td>{{ travel.destination.country }}</td>
+                <td>{{ travel.departureDate ? travel.departureDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ travel.arrivalDate ? travel.arrivalDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ travel.createdAt ? travel.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('admin_travel_show', {'id': travel.id}) }}">show</a>
+                    <a href="{{ path('admin_travel_edit', {'id': travel.id}) }}">edit</a>
+                    <a href="{{ path('admin_travel_delete', {'id': travel.id}) }}">delete</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_travel_new') }}">Create new</a>
+{% endblock %}

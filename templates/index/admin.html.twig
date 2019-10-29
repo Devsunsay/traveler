@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Admninistrator !{% endblock %}
+
+{% block body %}
+    <header>
+        <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">tRAVELER</a>
+            <ul class="navbar-nav px-3">
+                <li class="nav-item text-nowrap">
+{#                    In the file security.yaml, we made a redirection after logout#}
+                    <a class="nav-link" href="{{ path('app_logout') }}">Log out</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <code>
+                                <a class="nav-link" href="{{ path('admin_user_index') }}">
+                                    <span data-feather="users"></span>Users
+                                </a>
+                            </code>
+                        </li>
+                        <li class="nav-item"><code><a class="nav-link" href="{{ path('admin_destination_index') }}">
+                                    Destinations
+                                </a>
+                            </code>
+                        </li>
+                        <li class="nav-item"><code><a class="nav-link" href="{{ path('admin_travel_index') }}">
+                                    Travels
+                                </a>
+                            </code>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+{% endblock %}

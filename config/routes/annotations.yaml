@@ -1,0 +1,5 @@
+controllers:
+    # We need to add *Controller.php in order to not have duplicate routes for the UserController (like /user/add et /admin/user/add
+    # Command php bin/console debug:router allows to check if all the routes are coherent (like not having /user accessible out of the /admin url)
+    resource: ../../src/Controller/*Controller.php
+    type: annotation
